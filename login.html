@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - 柱の会</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <header class="login-header">
+                <h1 class="logo">ZAIKO</h1>
+                <button class="register-btn" onclick="goToRegister()">会員登録</button>
+            </header>
+
+            <div class="login-box">
+                <h2>メールアドレスまたはユーザーID</h2>
+                <input type="text" class="input-field" placeholder="メールアドレスまたはユーザーID">
+
+                <div class="password-section">
+                    <label>パスワード</label>
+                    <a href="#" class="forgot-password">パスワードを忘れた方</a>
+                </div>
+                <input type="password" class="input-field" placeholder="••••••••">
+
+                <div class="remember-section">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">ログイン情報を記憶</label>
+                </div>
+
+                <button class="login-submit-btn" onclick="handleLogin()">ログイン</button>
+
+                <div class="other-login-section">
+                    <p>ソーシャルアカウントからログイン/会員登録</p>
+                    <div class="other-login-methods">
+                        <div class="login-method">
+                            <p>他のログイン方法</p>
+                        </div>
+                        <div class="social-buttons-grid">
+                            <button class="social-btn google-btn">
+                                <span>Google</span>
+                            </button>
+                            <button class="social-btn apple-btn">
+                                <span>Appleでサインイン</span>
+                            </button>
+                            <button class="social-btn line-btn">
+                                <span>LINE</span>
+                            </button>
+                            <button class="social-btn twitter-btn">
+                                <span>X</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToRegister() {
+            window.location.href = 'personal-info.html';
+        }
+
+        function handleLogin() {
+            // 模擬 OpenID 認證流程
+            window.location.href = 'openid-auth.html';
+        }
+    </script>
+</body>
+</html>

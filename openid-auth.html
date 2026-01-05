@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenID 認証 - 柱の会</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-right-section">
+            <div class="auth-dialog">
+                <div class="auth-dialog-content">
+                    <div class="user-section">
+                        <div class="user-avatar">
+                            <div class="avatar-placeholder">H</div>
+                        </div>
+                        <h3>HUNG TOKO</h3>
+                    </div>
+
+                    <p class="auth-message">
+                        「柱の会」がログインのためにZaikoアカウントを使用しようとしています。
+                    </p>
+
+                    <div class="auth-buttons">
+                        <button class="btn-confirm" onclick="confirmAuth()">確認</button>
+                        <button class="btn-cancel" onclick="cancelAuth()">キャンセル</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confirmAuth() {
+            window.location.href = 'success.html';
+        }
+
+        function cancelAuth() {
+            window.location.href = 'personal-info.html';
+        }
+    </script>
+</body>
+</html>

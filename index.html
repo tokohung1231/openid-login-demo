@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>柱の会 - AKB48 Official Fan Club</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <section class="hero">
+                <img src="hero-image.png" alt="柱の会" class="hero-image">
+            </section>
+
+            <section class="info-section">
+                <p>2022年12月7日(水)より「AKB48 Mobile」は<br>
+                    「AKB48 Official Fan Club『柱の会』」(通称『柱の会』)<br>
+                    としてリニューアルいたしました。
+                </p>
+                <p>「AKB48 Mobile」会員様はリニューアル後も変わります。<br>
+                    「柱の会」会員様としてサービスをご利用いただくことが可能です。
+                </p>
+            </section>
+
+            <section class="cta-section">
+                <div class="cta-box" onclick="goToLogin()">
+                    <p>柱の会 新規会員登録</p>
+                </div>
+                <div class="cta-box" onclick="goToLogin()">
+                    <p>柱の会 ログイン</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© AKB48</p>
+        </footer>
+    </div>
+
+    <script>
+        function goToLogin() {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

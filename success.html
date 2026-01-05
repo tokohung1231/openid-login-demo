@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン成功 - 柱の会</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="success-container">
+        <main class="success-content">
+            <div class="success-card">
+                <h1 class="success-title">柱の会 ログイン成功</h1>
+                
+                <div class="success-message-section">
+                    <p class="success-info">
+                        柱の会は月額330円(税込)の有料サービスです。<br>
+                        会員登録いただくと、会員限定コンテンツを確かな特典をご利用いただくことができます。
+                    </p>
+                    <p class="success-disclaimer">
+                        ※当サイトご利用にあたっては、以下に選載の「個人情報の取扱い」および「利用規約」をご確認ください。
+                    </p>
+                </div>
+
+                <button class="info-button" onclick="goToInfo()">柱の会とは？</button>
+
+                <div class="terms-section">
+                    <button class="terms-button" onclick="goToPersonalInfo()">個人情報の取扱いについて（必読）→</button>
+                    <button class="terms-button" onclick="goToTerms()">利用規約（必読）→</button>
+                </div>
+
+                <button class="back-button" onclick="goToHome()">ホームへ戻る</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        function goToInfo() {
+            alert('柱の会についての情報');
+        }
+
+        function goToPersonalInfo() {
+            alert('個人情報の取扱いについて');
+        }
+
+        function goToTerms() {
+            alert('利用規約');
+        }
+    </script>
+</body>
+</html>

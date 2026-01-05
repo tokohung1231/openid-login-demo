@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人情報 - 柱の会</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-card">
+            <header class="form-header">
+                <h1 class="logo">ZAIKO</h1>
+            </header>
+
+            <div class="form-box">
+                <h2>住所 <span class="required">必須</span></h2>
+
+                <div class="form-group">
+                    <label for="phone">電話番号 <span class="required">必須</span></label>
+                    <input type="tel" id="phone" class="input-field" placeholder="">
+                </div>
+
+            <div class="form-group">
+                <label for="postal">郵便番号 (000-0000)</label>
+                <input type="text" id="postal" class="input-field" placeholder="000-0000">
+            </div>
+
+            <div class="form-group">
+                <label for="country">日本</label>
+                <select id="country" class="input-field">
+                    <option>日本</option>
+                </select>
+            </div>
+
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label for="prefecture">選択</label>
+                        <select id="prefecture" class="input-field">
+                            <option value="">選択してください</option>
+                            <option>北海道</option>
+                            <option>青森県</option>
+                            <option>岩手県</option>
+                            <option>宮城県</option>
+                            <option>秋田県</option>
+                            <option>山形県</option>
+                            <option>福島県</option>
+                            <option>茨城県</option>
+                            <option>栃木県</option>
+                            <option>群馬県</option>
+                            <option>埼玉県</option>
+                            <option>千葉県</option>
+                            <option>東京都</option>
+                            <option>神奈川県</option>
+                            <option>富山県</option>
+                            <option>石川県</option>
+                            <option>福井県</option>
+                            <option>山梨県</option>
+                            <option>長野県</option>
+                            <option>岐阜県</option>
+                            <option>愛知県</option>
+                            <option>三重県</option>
+                            <option>滋賀県</option>
+                            <option>京都府</option>
+                            <option>大阪府</option>
+                            <option>兵庫県</option>
+                            <option>奈良県</option>
+                            <option>和歌山県</option>
+                            <option>鳥取県</option>
+                            <option>島根県</option>
+                            <option>岡山県</option>
+                            <option>広島県</option>
+                            <option>山口県</option>
+                            <option>徳島県</option>
+                            <option>香川県</option>
+                            <option>愛媛県</option>
+                            <option>高知県</option>
+                            <option>福岡県</option>
+                            <option>佐賀県</option>
+                            <option>長崎県</option>
+                            <option>熊本県</option>
+                            <option>大分県</option>
+                            <option>宮崎県</option>
+                            <option>鹿児島県</option>
+                            <option>沖縄県</option>
+                        </select>
+                    </div>
+                    <div class="form-group flex-2">
+                        <label for="city">市区町村</label>
+                        <input type="text" id="city" class="input-field" placeholder="">
+                    </div>
+                </div>            <div class="form-group">
+                <label for="town">町村 例: 外神田</label>
+                <input type="text" id="town" class="input-field" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="building">丁目番地号 例: 4-3-3</label>
+                <input type="text" id="building" class="input-field" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="apartment">マンション名・部屋番号等 例: XXマンション 101号室</label>
+                <input type="text" id="apartment" class="input-field" placeholder="">
+            </div>
+
+            <button class="submit-btn" onclick="goToConfirmation()">次へ</button>
+        </div>
+    </div>
+
+    <script>
+        function goToConfirmation() {
+            // 驗證表單
+            const phone = document.getElementById('phone').value;
+
+            if (!phone) {
+                alert('電話番号を入力してください');
+                return;
+            }
+
+            // 儲存表單資料到 localStorage
+            const formData = {
+                phone,
+                postal: document.getElementById('postal').value,
+                prefecture: document.getElementById('prefecture').value,
+                city: document.getElementById('city').value,
+                town: document.getElementById('town').value,
+                building: document.getElementById('building').value,
+                apartment: document.getElementById('apartment').value
+            };
+            localStorage.setItem('userFormData', JSON.stringify(formData));
+
+            window.location.href = 'openid-auth.html';
+        }
+    </script>
+</body>
+</html>
