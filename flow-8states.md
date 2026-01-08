@@ -17,34 +17,31 @@
 | A | ON | ON | ON | 快速通道 + 已付費 | 🔴 高 |
 | B | ON | ON | OFF | 快速通道 + 未付費 | 🔴 高 |
 | C | OFF | ON | ON | 正常登入 + 已付費 | 🔴 高 |
-| D | OFF | ON | OFF | 正常登入 + 未付費（完整流程） | 🔴 高 |
+| D | OFF | ON | OFF | 正常登入 + 未付費 | 🔴 高 |
 | E | (任意) | OFF | (任意) | 會員登録流程 | 🟡 中 |
 
 ---
 
 ## 狀態 A: isLoggedIn=ON, hasAccount=ON, hasPaid=ON
-**場景**：已登入 + 有帳號 + 已付費（最優化流程）
+**場景**：已登入 + 有帳號 + 已付費（最快通道）
 
 ```
 首頁 (index.html)
-  ↓ 顯示「柱の会 ログイン」
-  ↓ 測試選單：有/有/有
   ↓ 點擊「柱の会 ログイン」
   ↓ (檢查 isLoggedIn = ON，直接跳過登入)
   ↓
 OpenID 認證頁 (openid-auth.html)
-  ↓ 顯示「確認」按鈕
   ↓ 點擊「確認」
-  ↓ (檢查 hasPaid = ON，直接跳過成功頁)
+  ↓ (檢查 hasPaid = ON，直接進 mypage)
   ↓
-個人情報頁 (personal-info.html)
-  ↓ 輸入地址資訊
-  ↓ 點擊「次へ」完成
+會員專用頁 (mypage.html)
+  ↓ 查看會員內容、個人資訊
+  ↓ 點擊「ログアウト」回首頁
 ```
 
-**操作數**：3步
-**流程**：index → openid-auth → personal-info
-**耗時**：⚡ 最短（無需登入、無需付費）
+**操作數**：2步
+**流程**：index → openid-auth → mypage
+**耗時**：⚡ 最短（無需登入、已付費）✅最快
 
 ---
 
@@ -53,13 +50,10 @@ OpenID 認證頁 (openid-auth.html)
 
 ```
 首頁 (index.html)
-  ↓ 顯示「柱の会 ログイン」
-  ↓ 測試選單：有/有/無
   ↓ 點擊「柱の会 ログイン」
   ↓ (檢查 isLoggedIn = ON，直接跳過登入)
   ↓
 OpenID 認證頁 (openid-auth.html)
-  ↓ 顯示「確認」按鈕
   ↓ 點擊「確認」
   ↓ (檢查 hasPaid = OFF，進入成功頁)
   ↓
@@ -68,14 +62,14 @@ OpenID 認證頁 (openid-auth.html)
   ↓ 點擊「使用信用卡付費」
   ↓ (設定 localStorage['test_hasPaid'] = true)
   ↓
-個人情報頁 (personal-info.html)
-  ↓ 輸入地址資訊
-  ↓ 點擊「次へ」完成
+會員專用頁 (mypage.html)
+  ↓ 查看會員內容、個人資訊
+  ↓ 點擊「ログアウト」回首頁
 ```
 
-**操作數**：4步
-**流程**：index → openid-auth → success → personal-info
-**耗時**：🔶 短（無需登入，但需付費）
+**操作數**：3步
+**流程**：index → openid-auth → success → mypage
+**耗時**：🔶 短（無需登入，但需付費）❌缺少付費
 
 ---
 
@@ -84,8 +78,6 @@ OpenID 認證頁 (openid-auth.html)
 
 ```
 首頁 (index.html)
-  ↓ 顯示「柱の会 ログイン」
-  ↓ 測試選單：無/有/有
   ↓ 點擊「柱の会 ログイン」
   ↓ (檢查 isLoggedIn = OFF，進入登入頁)
   ↓
@@ -95,19 +87,17 @@ OpenID 認證頁 (openid-auth.html)
   ↓ (檢查 hasAccount = ON ✓)
   ↓
 OpenID 認證頁 (openid-auth.html)
-  ↓ 顯示「確認」按鈕
   ↓ 點擊「確認」
-  ↓ (檢查 hasPaid = ON，直接跳過成功頁)
+  ↓ (檢查 hasPaid = ON，直接進 mypage)
   ↓
-個人情報頁 (personal-info.html)
-  ↓ 輸入地址資訊
-  ↓ 點擊「次へ」完成
+會員專用頁 (mypage.html)
+  ↓ 查看會員內容、個人資訊
+  ↓ 點擊「ログアウト」回首頁
 ```
 
-**操作數**：4步
-**流程**：index → login → openid-auth → personal-info
-**耗時**：🔶 中等（需要登入，但已付費無需額外付費步驟）
-**備註**：最常見的標準流程（簡化版）
+**操作數**：3步
+**流程**：index → login → openid-auth → mypage
+**耗時**：🔶 中等（需要登入，但已付費）✅已付費
 
 ---
 
@@ -116,8 +106,6 @@ OpenID 認證頁 (openid-auth.html)
 
 ```
 首頁 (index.html)
-  ↓ 顯示「柱の会 ログイン」
-  ↓ 測試選單：無/有/無
   ↓ 點擊「柱の会 ログイン」
   ↓ (檢查 isLoggedIn = OFF，進入登入頁)
   ↓
@@ -127,7 +115,6 @@ OpenID 認證頁 (openid-auth.html)
   ↓ (檢查 hasAccount = ON ✓)
   ↓
 OpenID 認證頁 (openid-auth.html)
-  ↓ 顯示「確認」按鈕
   ↓ 點擊「確認」
   ↓ (檢查 hasPaid = OFF，進入成功頁)
   ↓
@@ -136,39 +123,53 @@ OpenID 認證頁 (openid-auth.html)
   ↓ 點擊「使用信用卡付費」
   ↓ (設定 localStorage['test_hasPaid'] = true)
   ↓
-個人情報頁 (personal-info.html)
-  ↓ 輸入地址資訊
-  ↓ 點擊「次へ」完成
+會員專用頁 (mypage.html)
+  ↓ 查看會員內容、個人資訊
+  ↓ 點擊「ログアウト」回首頁
 ```
 
-**操作數**：5步
-**流程**：index → login → openid-auth → success → personal-info
-**耗時**：⏱️ 最長（經過所有頁面）
-**備註**：完整標準流程，新用戶的典型路徑
+**操作數**：4步
+**流程**：index → login → openid-auth → success → mypage
+**耗時**：⏱️ 最長（經過所有認證和付費）❌缺少付費
 
 ---
 
 ## 狀態 E: hasAccount=OFF（任意 isLoggedIn, hasPaid）
-**場景**：無帳號（需要會員登録）
+**場景**：無帳號（會員登録流程）
 
 ```
 首頁 (index.html)
-  ↓ 顯示「柱の会 ログイン」或「新規會員登録」
-  ↓ 測試選單：無/無/* （hasPaid 無關）
-  ↓ 點擊「新規會員登録」
-  ↓ (檢查 hasAccount = OFF，直接進會員登録)
+  ↓ 點擊「柱の会 ログイン」或「新規會員登録」
+  ↓ (檢查 hasAccount = OFF，進入登入頁)
+  ↓
+登入頁 (login.html)
+  ↓ 點擊「ログイン」
+  ↓ (檢查 hasAccount = OFF ✗)
+  ↓ 顯示錯誤訊息：「あなたはアカウントがありません」
+  ↓ 點擊「會員登録へ」
   ↓
 個人情報頁 (personal-info.html)
-  ↓ 輸入地址資訊
-  ↓ 點擊「次へ」進行帳號建立流程
+  ↓ 輸入電話號碼等地址資訊
+  ↓ 點擊「次へ」
   ↓
-[後續流程取決於 isLoggedIn 和 hasPaid 的值]
+OpenID 認證頁 (openid-auth.html)
+  ↓ 點擊「確認」
+  ↓ (檢查 hasPaid = OFF，進入成功頁進行付費)
+  ↓
+成功頁 (success.html)
+  ↓ 顯示「使用信用卡付費」按鈕
+  ↓ 點擊「使用信用卡付費」
+  ↓ (設定 localStorage['test_hasPaid'] = true)
+  ↓
+會員專用頁 (mypage.html)
+  ↓ 查看會員內容、個人資訊
+  ↓ 點擊「ログアウト」回首頁
 ```
 
-**操作數**：2-3步（取決於後續流程）
-**流程**：index → personal-info → (openid-auth/success/etc)
-**耗時**：🔶 中等（略過登入驗證，直接建立帳號）
-**備註**：新用戶註冊流程，不需要驗證現有帳號
+**操作數**：5-6步
+**流程**：index → login(error) → personal-info → openid-auth → success → mypage
+**耗時**：🔶 中等（完整會員註冊流程）👶新會員
+**備註**：新用戶註冊流程
 
 ---
 
@@ -176,21 +177,26 @@ OpenID 認證頁 (openid-auth.html)
 
 ```
 首頁 (index.html)
-  ↓ 點擊「ログイン」或「會員登録」
+  ↓ 點擊「ログイン」
+  ↓
+  ├─ isLoggedIn = ON?
+  │  ├─ YES → 直接進 openid-auth.html (快速通道)
+  │  └─ NO  → 進 login.html (正常登入)
+  │
+OpenID 認證頁 (openid-auth.html) 或 登入頁 (login.html)
   ↓
   ├─ hasAccount = ON?
-  │  ├─ YES → isLoggedIn = ON?
-  │  │         ├─ YES → 直接進 openid-auth.html (快速通道)
-  │  │         └─ NO  → 進 login.html (正常登入)
-  │  │              ↓ ログイン成功
-  │  │              ↓ 進 openid-auth.html
+  │  ├─ YES → openid-auth.html (已有帳號)
+  │  │       ↓ 檢查 hasPaid?
+  │  │       ├─ YES → mypage.html (直接進會員頁)
+  │  │       └─ NO  → success.html (付費) → mypage.html
   │  │
-  │  └─ NO → 直接進 personal-info.html (會員登録流程)
-  │
-  └─ 在 openid-auth.html
-     ├─ hasPaid = ON?
-     │  ├─ YES → 直接進 personal-info.html
-     │  └─ NO  → 進 success.html → 點擊付費 → personal-info.html
+  │  └─ NO → personal-info.html (會員登録)
+  │          ↓ 填完資訊
+  │          ↓ openid-auth.html
+  │          ↓ 檢查 hasPaid?
+  │          ├─ YES → mypage.html
+  │          └─ NO  → success.html (付費) → mypage.html
 ```
 
 ---

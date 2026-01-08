@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="test-item">
-                    <span>柱の会付費資格:</span>
+                    <span>柱の会会費支払い:</span>
                     <div class="toggle-switch">
                         <input type="checkbox" id="hasPaid" onchange="updateTestSettings()">
                         <span class="toggle-label" id="paidLabel">無</span>
@@ -66,13 +66,22 @@
 
     <script>
         function goToLogin() {
-            // 如果已登入，直接進 openid-auth
-            const isLoggedIn = localStorage.getItem('test_isLoggedIn') === 'true';
-            if (isLoggedIn) {
-                window.location.href = 'openid-auth.html';
-            } else {
-                // 否則進登入頁
+            // 首先檢查是否有帳號
+            const hasAccount = localStorage.getItem('test_hasAccount') === 'true';
+            
+            if (!hasAccount) {
+                // 沒有帳號，直接進登入頁
                 window.location.href = 'login.html';
+            } else {
+                // 有帳號，再檢查登入狀態
+                const isLoggedIn = localStorage.getItem('test_isLoggedIn') === 'true';
+                if (isLoggedIn) {
+                    // 已登入，直接進 openid-auth
+                    window.location.href = 'openid-auth.html';
+                } else {
+                    // 未登入，進登入頁
+                    window.location.href = 'login.html';
+                }
             }
         }
 
