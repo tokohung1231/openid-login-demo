@@ -911,6 +911,15 @@ body {
     transform: translateY(-5px);
 }
 
+.content-placeholder {
+    width: 100%;
+    height: 160px;
+    background: #f0f0f0;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
 .content-image-wrapper {
     width: 100%;
     height: 160px;
