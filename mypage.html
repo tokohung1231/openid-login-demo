@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイページ - 柱の会</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mypage-container">
+        <header class="mypage-header">
+            <h1 class="logo">ZAIKO</h1>
+            <button class="logout-btn" onclick="logout()">ログアウト</button>
+        </header>
+
+        <main class="mypage-content">
+            <h1 class="mypage-title">マイページ</h1>
+
+            <section class="member-content">
+                <h2 class="section-title">会員限定コンテンツはこちら ▶</h2>
+                
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="content-1.png" alt="待ち受け画像" class="content-image">
+                        <h3>待ち受け画像</h3>
+                    </div>
+                    <div class="content-card">
+                        <img src="content-2.png" alt="インタビュー" class="content-image">
+                        <h3>インタビュー</h3>
+                    </div>
+                    <div class="content-card">
+                        <img src="content-3.png" alt="応援広告" class="content-image">
+                        <h3>応援広告</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="user-info-section">
+                <h2 class="section-title">マイページ</h2>
+                
+                <div class="user-info-card">
+                    <div class="info-header">
+                        <button class="edit-btn" onclick="editProfile()">編集</button>
+                    </div>
+
+                    <div class="user-name">Tokoさん</div>
+
+                    <div class="info-table">
+                        <div class="info-row">
+                            <span class="info-label">会員期間</span>
+                            <span class="info-value">3ヶ月</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">性別</span>
+                            <span class="info-value">女性</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">生年月日</span>
+                            <span class="info-value">1992年 12月 31日</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">ポイント</span>
+                            <span class="info-value">600ポイント</span>
+                        </div>
+                    </div>
+
+                    <div class="points-detail">
+                        <h3>ポイントの内訳</h3>
+                        <div class="point-row">
+                            <span class="point-label">💰 月額ポイント</span>
+                            <span class="point-value">600ポイント</span>
+                        </div>
+                        <div class="point-row">
+                            <span class="point-label">💰 プレミアムポイント</span>
+                            <span class="point-value">0ポイント</span>
+                        </div>
+                        <div class="point-row">
+                            <span class="point-label">💰 追加購入ポイント</span>
+                            <span class="point-value">0ポイント</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <button class="back-home-btn" onclick="goToHome()">ホームへ戻る</button>
+        </main>
+
+        <footer class="footer">
+            <p>© AKB48</p>
+        </footer>
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm('ログアウトしますか？')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function editProfile() {
+            alert('プロフィール編集機能');
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
