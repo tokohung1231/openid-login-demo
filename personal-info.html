@@ -8,22 +8,19 @@
 </head>
 <body>
     <div class="test-menu">
-        <button class="test-btn" onclick="toggleTestMenu()">🧪 テスト</button>
-        <div class="test-panel" id="testPanel" style="display: none;">
-            <h3>テスト設定（表示のみ）</h3>
-            <div class="test-items">
-                <div class="test-item">
-                    <span>Zaikoアカウント:</span>
-                    <span class="toggle-label" id="accountLabel">無</span>
-                </div>
-                <div class="test-item">
-                    <span>ログイン状態:</span>
-                    <span class="toggle-label" id="loginLabel">無</span>
-                </div>
-                <div class="test-item">
-                    <span>柱の会付費資格:</span>
-                    <span class="toggle-label" id="paidLabel">無</span>
-                </div>
+        <h3>🧪 テスト</h3>
+        <div class="test-items">
+            <div class="test-item">
+                <span>Zaikoアカウント:</span>
+                <span class="toggle-label" id="accountLabel">無</span>
+            </div>
+            <div class="test-item">
+                <span>ログイン状態:</span>
+                <span class="toggle-label" id="loginLabel">無</span>
+            </div>
+            <div class="test-item">
+                <span>柱の会付費資格:</span>
+                <span class="toggle-label" id="paidLabel">無</span>
             </div>
         </div>
     </div>
@@ -130,11 +127,6 @@
     </div>
 
     <script>
-        function toggleTestMenu() {
-            const panel = document.getElementById('testPanel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-        }
-
         // 頁面載入時讀取測試選單狀態
         window.addEventListener('load', function() {
             const hasAccount = localStorage.getItem('test_hasAccount') === 'true';

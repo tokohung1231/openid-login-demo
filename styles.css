@@ -40,6 +40,26 @@ body {
     text-align: center;
 }
 
+.test-btn {
+    background: #FF1493;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 100%;
+    margin: 0;
+}
+
+.test-btn:hover {
+    background: #E80075;
+    transform: scale(1.05);
+}
+
 .test-items {
     display: flex;
     flex-direction: column;
@@ -50,62 +70,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
     font-size: 13px;
     color: #333;
-}
-
-.toggle-switch {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.toggle-switch input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 40px;
-    height: 22px;
-    background-color: #ccc;
-    border-radius: 11px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    outline: none;
-    position: relative;
-}
-
-.toggle-switch input[type="checkbox"]:checked {
-    background-color: #FF1493;
-}
-
-.toggle-switch input[type="checkbox"]:before {
-    content: '';
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background-color: white;
-    top: 2px;
-    left: 2px;
-    transition: left 0.3s ease;
-}
-
-.toggle-switch input[type="checkbox"]:checked:before {
-    left: 20px;
-}
-
-.toggle-label {
-    font-weight: bold;
-    color: #FF1493;
-    font-size: 13px;
-    min-width: 15px;
-}
-
-.test-item input[type="checkbox"] {
-    margin-right: 8px;
-    cursor: pointer;
-    width: 14px;
-    height: 14px;
 }
 
 .test-apply-btn {
@@ -1146,23 +1112,6 @@ body {
 .test-btn:hover {
     background: #E80075;
     transform: scale(1.05);
-}
-
-.test-panel {
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    min-width: 250px;
-}
-
-.test-panel h3 {
-    color: #FF1493;
-    margin-top: 0;
-    font-size: 16px;
 }
 
 .test-items {

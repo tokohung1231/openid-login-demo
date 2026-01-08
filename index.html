@@ -9,30 +9,27 @@
 <body>
     <div class="container">
         <div class="test-menu">
-            <button class="test-btn" onclick="toggleTestMenu()">🧪 テスト</button>
-            <div class="test-panel" id="testPanel" style="display: none;">
-                <h3>テスト設定</h3>
-                <div class="test-items">
-                    <div class="test-item">
-                        <span>Zaikoアカウント:</span>
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="hasAccount" onchange="updateTestSettings()">
-                            <span class="toggle-label" id="accountLabel">無</span>
-                        </div>
+            <h3>🧪 テスト</h3>
+            <div class="test-items">
+                <div class="test-item">
+                    <span>Zaikoアカウント:</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="hasAccount" onchange="updateTestSettings()">
+                        <span class="toggle-label" id="accountLabel">無</span>
                     </div>
-                    <div class="test-item">
-                        <span>ログイン状態:</span>
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="isLoggedIn" onchange="updateTestSettings()">
-                            <span class="toggle-label" id="loginLabel">無</span>
-                        </div>
+                </div>
+                <div class="test-item">
+                    <span>ログイン状態:</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="isLoggedIn" onchange="updateTestSettings()">
+                        <span class="toggle-label" id="loginLabel">無</span>
                     </div>
-                    <div class="test-item">
-                        <span>柱の会付費資格:</span>
-                        <div class="toggle-switch">
-                            <input type="checkbox" id="hasPaid" onchange="updateTestSettings()">
-                            <span class="toggle-label" id="paidLabel">無</span>
-                        </div>
+                </div>
+                <div class="test-item">
+                    <span>柱の会付費資格:</span>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="hasPaid" onchange="updateTestSettings()">
+                        <span class="toggle-label" id="paidLabel">無</span>
                     </div>
                 </div>
             </div>
@@ -77,11 +74,6 @@
                 // 否則進登入頁
                 window.location.href = 'login.html';
             }
-        }
-
-        function toggleTestMenu() {
-            const panel = document.getElementById('testPanel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
         }
 
         function updateTestSettings() {
