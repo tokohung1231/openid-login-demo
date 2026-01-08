@@ -7,6 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="test-menu">
+        <button class="test-btn" onclick="toggleTestMenu()">🧪 テスト</button>
+        <div class="test-panel" id="testPanel" style="display: none;">
+            <h3>テスト設定（表示のみ）</h3>
+            <div class="test-items">
+                <div class="test-item">
+                    <span>Zaikoアカウント:</span>
+                    <span class="toggle-label" id="accountLabel">無</span>
+                </div>
+                <div class="test-item">
+                    <span>ログイン状態:</span>
+                    <span class="toggle-label" id="loginLabel">無</span>
+                </div>
+                <div class="test-item">
+                    <span>柱の会付費資格:</span>
+                    <span class="toggle-label" id="paidLabel">無</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="success-container">
         <main class="success-content">
             <div class="success-card">
@@ -64,9 +84,22 @@
             window.location.href = 'personal-info.html';
         }
 
-        // 頁面載入時檢查 hasPaid
+        function toggleTestMenu() {
+            const panel = document.getElementById('testPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // 頁面載入時檢查 hasPaid 並讀取測試選單狀態
         window.addEventListener('load', function() {
             const hasPaid = localStorage.getItem('test_hasPaid') === 'true';
+            const hasAccount = localStorage.getItem('test_hasAccount') === 'true';
+            const isLoggedIn = localStorage.getItem('test_isLoggedIn') === 'true';
+
+            // 讀取測試選單狀態
+            document.getElementById('accountLabel').textContent = hasAccount ? '有' : '無';
+            document.getElementById('loginLabel').textContent = isLoggedIn ? '有' : '無';
+            document.getElementById('paidLabel').textContent = hasPaid ? '有' : '無';
+
             if (hasPaid) {
                 // 如果已付費，直接導向個人情報頁面
                 window.location.href = 'personal-info.html';
