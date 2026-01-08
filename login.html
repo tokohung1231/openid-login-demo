@@ -15,7 +15,14 @@
             </header>
 
             <div class="login-box">
-                <h2>メールアドレスまたはユーザーID</h2>
+                <div id="errorMessage" class="error-box" style="display: none;">
+                    <p class="error-message">あなたはアカウントがありません</p>
+                    <p class="error-subtitle">会員登録を行ってください</p>
+                    <button class="register-link-btn" onclick="goToRegister()">會員登録へ</button>
+                </div>
+
+                <div id="loginForm">
+                    <h2>メールアドレスまたはユーザーID</h2>
                 <input type="text" class="input-field" placeholder="メールアドレスまたはユーザーID">
 
                 <div class="password-section">
@@ -53,6 +60,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </div>
@@ -63,9 +71,27 @@
         }
 
         function handleLogin() {
-            // 模擬 OpenID 認證流程
+            const hasAccount = localStorage.getItem('test_hasAccount') === 'true';
+            const errorBox = document.getElementById('errorMessage');
+            const loginForm = document.getElementById('loginForm');
+
+            if (!hasAccount) {
+                loginForm.style.display = 'none';
+                errorBox.style.display = 'block';
+                return;
+            }
+
+            // 進行 OpenID 認證流程
             window.location.href = 'openid-auth.html';
         }
+
+        // 頁面載入時檢查並顯示正確內容
+        window.addEventListener('load', function() {
+            const errorBox = document.getElementById('errorMessage');
+            const loginForm = document.getElementById('loginForm');
+            errorBox.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
     </script>
 </body>
 </html>

@@ -105,10 +105,15 @@
             </div>
 
             <button class="submit-btn" onclick="goToConfirmation()">次へ</button>
+            <button class="back-btn" onclick="goToHome()">ホームへ戻る</button>
         </div>
     </div>
 
     <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
         function goToConfirmation() {
             // 驗證表單
             const phone = document.getElementById('phone').value;

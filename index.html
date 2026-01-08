@@ -8,6 +8,35 @@
 </head>
 <body>
     <div class="container">
+        <div class="test-menu">
+            <button class="test-btn" onclick="toggleTestMenu()">🧪 テスト</button>
+            <div class="test-panel" id="testPanel" style="display: none;">
+                <h3>テスト設定</h3>
+                <div class="test-items">
+                    <div class="test-item">
+                        <span>Zaikoアカウント:</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="hasAccount" onchange="updateTestSettings()">
+                            <span class="toggle-label" id="accountLabel">無</span>
+                        </div>
+                    </div>
+                    <div class="test-item">
+                        <span>ログイン状態:</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="isLoggedIn" onchange="updateTestSettings()">
+                            <span class="toggle-label" id="loginLabel">無</span>
+                        </div>
+                    </div>
+                    <div class="test-item">
+                        <span>柱の会付費資格:</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="hasPaid" onchange="updateTestSettings()">
+                            <span class="toggle-label" id="paidLabel">無</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main class="main-content">
             <section class="hero">
                 <img src="hero-image.png" alt="柱の会" class="hero-image">
@@ -40,8 +69,50 @@
 
     <script>
         function goToLogin() {
-            window.location.href = 'login.html';
+            // 如果已登入，直接進 openid-auth
+            const isLoggedIn = localStorage.getItem('test_isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                window.location.href = 'openid-auth.html';
+            } else {
+                // 否則進登入頁
+                window.location.href = 'login.html';
+            }
         }
+
+        function toggleTestMenu() {
+            const panel = document.getElementById('testPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function updateTestSettings() {
+            const hasAccount = document.getElementById('hasAccount').checked;
+            const isLoggedIn = document.getElementById('isLoggedIn').checked;
+            const hasPaid = document.getElementById('hasPaid').checked;
+
+            // 更新標籤
+            document.getElementById('accountLabel').textContent = hasAccount ? '有' : '無';
+            document.getElementById('loginLabel').textContent = isLoggedIn ? '有' : '無';
+            document.getElementById('paidLabel').textContent = hasPaid ? '有' : '無';
+
+            // 儲存到 localStorage
+            localStorage.setItem('test_hasAccount', hasAccount);
+            localStorage.setItem('test_isLoggedIn', isLoggedIn);
+            localStorage.setItem('test_hasPaid', hasPaid);
+        }
+
+        // 頁面載入時讀取設定
+        window.addEventListener('load', function() {
+            const hasAccount = localStorage.getItem('test_hasAccount') === 'true';
+            const isLoggedIn = localStorage.getItem('test_isLoggedIn') === 'true';
+            const hasPaid = localStorage.getItem('test_hasPaid') === 'true';
+
+            document.getElementById('hasAccount').checked = hasAccount;
+            document.getElementById('isLoggedIn').checked = isLoggedIn;
+            document.getElementById('hasPaid').checked = hasPaid;
+
+            // 初始更新標籤
+            updateTestSettings();
+        });
     </script>
 </body>
 </html>

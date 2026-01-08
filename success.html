@@ -24,6 +24,8 @@
 
                 <button class="info-button" onclick="goToInfo()">柱の会とは？</button>
 
+                <button class="payment-button" onclick="handlePayment()">使用信用卡付費</button>
+
                 <div class="terms-section">
                     <button class="terms-button" onclick="goToPersonalInfo()">個人情報の取扱いについて（必読）→</button>
                     <button class="terms-button" onclick="goToTerms()">利用規約（必読）→</button>
@@ -48,12 +50,28 @@
         }
 
         function goToPersonalInfo() {
-            alert('個人情報の取扱いについて');
+            window.location.href = 'personal-info.html';
         }
 
         function goToTerms() {
             alert('利用規約');
         }
+
+        function handlePayment() {
+            // 設定 hasPaid 為 true
+            localStorage.setItem('test_hasPaid', true);
+            // 導向個人情報頁面
+            window.location.href = 'personal-info.html';
+        }
+
+        // 頁面載入時檢查 hasPaid
+        window.addEventListener('load', function() {
+            const hasPaid = localStorage.getItem('test_hasPaid') === 'true';
+            if (hasPaid) {
+                // 如果已付費，直接導向個人情報頁面
+                window.location.href = 'personal-info.html';
+            }
+        });
     </script>
 </body>
 </html>

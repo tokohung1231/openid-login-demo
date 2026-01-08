@@ -33,11 +33,20 @@
 
     <script>
         function confirmAuth() {
-            window.location.href = 'success.html';
+            // 檢查是否已付費
+            const hasPaid = localStorage.getItem('test_hasPaid') === 'true';
+            
+            if (hasPaid) {
+                // 已付費，直接進個人情報頁
+                window.location.href = 'personal-info.html';
+            } else {
+                // 未付費，進成功頁進行付費
+                window.location.href = 'success.html';
+            }
         }
 
         function cancelAuth() {
-            window.location.href = 'personal-info.html';
+            window.location.href = 'login.html';
         }
     </script>
 </body>
